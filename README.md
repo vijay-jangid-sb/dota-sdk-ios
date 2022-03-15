@@ -2,7 +2,7 @@
 Learn how to install the Devnagri SDK for iOS.
 
 # Introduction
-Phrase Over the Air for iOS lets you update translations in your iOS app without having to release it every single time.
+Devnagri Over the Air for iOS lets you update translations in your iOS app without having to release it every single time.
 
 By including our SDK, your app will check for updated translations in Devnagri regularly and download them in the background.
 
@@ -32,8 +32,8 @@ mv "$FRAMEWORK_EXECUTABLE_PATH-merged" "$FRAMEWORK_EXECUTABLE_PATH"
 
 Initialize the SDK by calling the following code in your didFinishLaunchingWithOptions Method and you can get API_KEY from devnagri
 
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-      DevnagriSDK.shared.init(
-        api_key: <API_KEY>
-      )
-  }
+     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+         DevnagriSDK.shared.init(
+           api_key: <API_KEY>
+         )
+     }
