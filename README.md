@@ -6,25 +6,25 @@ Devnagri Over the Air for iOS lets you update translations in your iOS app witho
 
 By including our SDK, your app will check for updated translations in Devnagri regularly and download them in the background.
 
-Install the SDK
 You can install the SDK manually.
 
 # Manual Installation
 Download the latest release from https://github.com/DevnagriAI/dota-sdk-ios/releases 
 Add DevnagriSDK.framework in Xcode as linked binary to your target.
 The Apple store will reject your app if it includes simulator binaries. Therefore, a script to strip the extra binaries needs to be run before you upload the app. To do this, go to Build Phases and add a Run Script section by clicking the + symbol. Copy and paste the following script:
-FRAMEWORK="DevnagriSDK"
-FRAMEWORK_EXECUTABLE_PATH="${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/$FRAMEWORK.framework/$FRAMEWORK"
-EXTRACTED_ARCHS=()
-for ARCH in $ARCHS
-do
-   lipo -extract "$ARCH" "$FRAMEWORK_EXECUTABLE_PATH" -o "$FRAMEWORK_EXECUTABLE_PATH-$ARCH"
-   EXTRACTED_ARCHS+=("$FRAMEWORK_EXECUTABLE_PATH-$ARCH")
-done
-lipo -o "$FRAMEWORK_EXECUTABLE_PATH-merged" -create "${EXTRACTED_ARCHS[@]}"
-rm "${EXTRACTED_ARCHS[@]}"
-rm "$FRAMEWORK_EXECUTABLE_PATH"
-mv "$FRAMEWORK_EXECUTABLE_PATH-merged" "$FRAMEWORK_EXECUTABLE_PATH"
+
+      FRAMEWORK="DevnagriSDK"
+      FRAMEWORK_EXECUTABLE_PATH="${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/$FRAMEWORK.framework/$FRAMEWORK"
+      EXTRACTED_ARCHS=()
+      for ARCH in $ARCHS
+      do
+         lipo -extract "$ARCH" "$FRAMEWORK_EXECUTABLE_PATH" -o "$FRAMEWORK_EXECUTABLE_PATH-$ARCH"
+         EXTRACTED_ARCHS+=("$FRAMEWORK_EXECUTABLE_PATH-$ARCH")
+      done
+      lipo -o "$FRAMEWORK_EXECUTABLE_PATH-merged" -create "${EXTRACTED_ARCHS[@]}"
+      rm "${EXTRACTED_ARCHS[@]}"
+      rm "$FRAMEWORK_EXECUTABLE_PATH"
+      mv "$FRAMEWORK_EXECUTABLE_PATH-merged" "$FRAMEWORK_EXECUTABLE_PATH"
 
 # Configuration
 
